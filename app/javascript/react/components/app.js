@@ -1,7 +1,10 @@
 import React from 'react'
 
 export const App = (props) => {
-  return (<div>Make It So React</div>)
+  return (
+    <div>
+
+    </div>)
 }
 
 export default App
