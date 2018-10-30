@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_10_29_205317) do
+=======
+ActiveRecord::Schema.define(version: 2018_10_29_143619) do
+>>>>>>> dc27cf77774152994ce8c6d88746d35eb8816145
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "bands", force: :cascade do |t|
     t.string "band_name", null: false
     t.string "bandcamp_url", null: false
@@ -28,6 +33,8 @@ ActiveRecord::Schema.define(version: 2018_10_29_205317) do
     t.string "booker_image"
   end
 
+=======
+>>>>>>> dc27cf77774152994ce8c6d88746d35eb8816145
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
