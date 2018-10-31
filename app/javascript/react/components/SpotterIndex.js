@@ -40,7 +40,7 @@ class SpotterIndex extends Component {
       return(
         <div key={band.id} className="band-card grid-x grid-margin-x">
           <div className="cell small-12">
-            <img className="game-promo-image-index" src={band.band_image} />
+            <img className="band-promo-image-index" src={band.band_image} />
           </div>
           <div className="cell small-12">
             <h3><a href={band.bandcamp_url}>{band.band_name}</a></h3>
