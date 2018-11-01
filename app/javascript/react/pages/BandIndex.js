@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 
 
-class SpotterIndex extends Component {
+class BandIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,7 +45,7 @@ class SpotterIndex extends Component {
           </div>
           <div className="cell small-12">
             <h3><Link to={`/bands/${band.id}`}>{band.band_name}</Link></h3>
-            <p>{band.band_name} {band.band_bio}</p>
+            <p>{band.band_bio}</p>
           </div>
         </div>
       )
@@ -57,4 +57,4 @@ class SpotterIndex extends Component {
     )
   }
 }
-export default SpotterIndex;
+export default BandIndex;
