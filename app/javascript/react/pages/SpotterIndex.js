@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
 
 
 class SpotterIndex extends Component {
@@ -43,7 +44,7 @@ class SpotterIndex extends Component {
             <img className="band-promo-image-index" src={band.band_image} />
           </div>
           <div className="cell small-12">
-            <h3><a href={band.bandcamp_url}>{band.band_name}</a></h3>
+            <h3><Link to={`/bands/${band.id}`}>{band.band_name}</Link></h3>
             <p>{band.band_name} {band.band_bio}</p>
           </div>
         </div>

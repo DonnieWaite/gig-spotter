@@ -26,7 +26,6 @@ class SpotterShowPage extends Component {
     })
     .then(data => {
       this.setState({ bandInfo: data })
-      debugger
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
@@ -46,9 +45,9 @@ class SpotterShowPage extends Component {
           <img src={this.state.bandInfo.band_image} width="500" height="500"/>
         </div>
         <div className="cell small-24 large-10 grid-y">
-            <p className="game-attribute"><span className="game-attribute-title">{this.state.bandInfo.band_name}</span> {this.state.bandInfo.band_bio}</p>
-          </div>
+          <p className="game-attribute"><span className="game-attribute-title">{this.state.bandInfo.band_name}</span> {this.state.bandInfo.band_bio}</p>
         </div>
+      </div>
     )
   }
 }

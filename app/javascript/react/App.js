@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, browserHistory, Route, IndexRoute, Link } from 'react-router';
-import SpotterIndex from './SpotterIndex'
-import SpotterShowPage from './SpotterShowPage'
+import SpotterIndex from './pages/SpotterIndex'
+import SpotterShowPage from './pages/SpotterShowPage'
 
 export const App = (props) => {
   return (
