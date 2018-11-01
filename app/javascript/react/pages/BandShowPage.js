@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class SpotterShowPage extends Component {
+class BandShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,4 +51,4 @@ class SpotterShowPage extends Component {
     )
   }
 }
-export default SpotterShowPage;
+export default BandShowPage;
