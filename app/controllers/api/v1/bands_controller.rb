@@ -1,9 +1,13 @@
 class Api::V1::BandsController < ApplicationController
+
   def index
-    render json: Band.all
+    all_bands = Band.all
+    render json: ActiveModel::Serializer::ArraySerializer.new(all_bands)
   end
 
   def show
-    render json: Band.find(params[:id])
+    band = [Band.find(params[:id])]
+    render json: ActiveModel::Serializer::ArraySerializer.new(band, { scope: {page: "show", user: current_user} })
   end
+
 end

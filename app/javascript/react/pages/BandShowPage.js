@@ -25,7 +25,9 @@ class BandShowPage extends Component {
       return response.json();
     })
     .then(data => {
-      this.setState({ bandInfo: data })
+      let band = data[0]
+      this.setState({ bandInfo: band })
+      debugger
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
@@ -35,7 +37,6 @@ class BandShowPage extends Component {
 }
 
   render() {
-
     return (
       <div className="game-show-page grid-x grid-margin-x">
         <div className="cell small-24">
