@@ -51,7 +51,9 @@ class BandIndex extends Component {
       )
     })
     return (
+
       <div>
+      <h4><Link to={'/bookers'}>Bookers</Link></h4>
       {bands}
       </div>
     )

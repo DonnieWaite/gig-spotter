@@ -6,8 +6,8 @@ import BandIndex from './pages/BandIndex'
 import BandShowPage from './pages/BandShowPage'
 import BookerIndex from './pages/BookerIndex'
 import BookerShowPage from './pages/BookerShowPage'
-import EventShowPage from './pages/EventShowPage'
-import NewEventPage from './pages/NewEventPage'
+import ConcertShowPage from './pages/ConcertShowPage'
+import NewConcertPage from './pages/NewConcertPage'
 
 export const App = (props) => {
   return (
@@ -17,8 +17,8 @@ export const App = (props) => {
       <Route path="/bands/:id" component={BandShowPage}/>
       <Route path='/bookers' component={BookerIndex}/>
       <Route path='/bookers/:id' component={BookerShowPage}/>
-      <Route path='/event/:id' component={EventShowPage}/>
-      <Route path='/event/new' component={NewEventPage}/>
+      <Route path='/concert/:id' component={ConcertShowPage}/>
+      <Route path='/concert/new' component={NewConcertPage}/>
     </Route>
   </Router>
   )
