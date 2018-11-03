@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class EventShowPage extends Component {
+class ConcertShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,4 +19,4 @@ class EventShowPage extends Component {
     )
   }
 }
-export default EventShowPage;
+export default ConcertShowPage;
