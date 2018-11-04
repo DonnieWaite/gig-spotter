@@ -6,14 +6,19 @@ class Api::V1::BandsController < ApplicationController
   end
 
   def show
-    band = [Band.find(params[:id])]
-    render json: ActiveModel::Serializer::ArraySerializer.new(band, { scope: {page: "show", user: current_user} })
+    @band = Band.find(params[:id])
+
+    render json: {
+  band: @band,
+  concerts: @band.concerts
+}
   end
 
   def create
     new_band = Band.create(band_name: band_params[:band_name], bandcamp_url: band_params[:bandcamp_url], genre: band_params[:genre], band_bio: band_params[:band_bio], band_image: band_params[:band_image], user: current_user)
     render json: new_band
   end
+
 
   private
 

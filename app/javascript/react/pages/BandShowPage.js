@@ -25,9 +25,9 @@ class BandShowPage extends Component {
       return response.json();
     })
     .then(data => {
+      debugger
       let band = data[0]
       this.setState({ bandInfo: band })
-      debugger
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
