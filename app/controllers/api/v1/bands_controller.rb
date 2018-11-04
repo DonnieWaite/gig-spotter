@@ -12,7 +12,7 @@ class Api::V1::BandsController < ApplicationController
 
   def create
     new_band = Band.create(band_name: band_params[:band_name], bandcamp_url: band_params[:bandcamp_url], genre: band_params[:genre], band_bio: band_params[:band_bio], band_image: band_params[:band_image], user: current_user)
-    render json: new_comment
+    render json: new_band
   end
 
   private

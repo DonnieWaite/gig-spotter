@@ -3,6 +3,7 @@ import { Router, browserHistory, Route, IndexRoute, Link } from 'react-router';
 
 import NavBar from './components/NavBar';
 import BandIndex from './pages/BandIndex'
+import NewBandPage from './pages/NewBandPage'
 import BandShowPage from './pages/BandShowPage'
 import BookerIndex from './pages/BookerIndex'
 import NewBookerPage from './pages/NewBookerPage'
@@ -15,6 +16,7 @@ export const App = (props) => {
   <Router history={browserHistory}>
     <Route path='/' component={NavBar} >
       <IndexRoute component={BandIndex}/>
+      <Route path='bands/new' component={NewBandPage}/>
       <Route path="/bands/:id" component={BandShowPage}/>
       <Route path='/bookers' component={BookerIndex}/>
       <Route path='/bookers/new' component={NewBookerPage}/>
