@@ -25,7 +25,8 @@ class BookerIndex extends Component {
       return response.json();
     })
     .then(data => {
-      this.setState({ bookers: data })
+      let bookers = data.bookers
+      this.setState({ bookers: bookers })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
     };
