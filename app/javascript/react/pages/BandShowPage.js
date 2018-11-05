@@ -5,7 +5,8 @@ class BandShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bandInfo: []
+      bandInfo: [],
+      concerts: []
     };
     this.fetchBand = this.fetchBand.bind(this)
   }
@@ -25,9 +26,10 @@ class BandShowPage extends Component {
       return response.json();
     })
     .then(data => {
-      let band = data[0]
+      let band = data.band
+      let concert = data.concerts
       this.setState({ bandInfo: band })
-      debugger
+      this.setState( { concerts: concert})
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
@@ -37,6 +39,22 @@ class BandShowPage extends Component {
 }
 
   render() {
+    let concert = this.state.concerts.map(concert => {
+      return(
+      <div className="game-show-page grid-x grid-margin-x" id={concert.id}>
+        <div className="cell small-24">
+          <h1 className="game-show-page-title">{concert.title}</h1>
+        </div>
+        <div className="cell small-24 large-14">
+          <p>{concert.description} </p>
+        </div>
+        <div className="cell small-24 large-10 grid-y">
+          <p className="game-attribute"><span className="game-attribute-title" >{concert.date_and_time}</span></p>
+          <p>{concert.location}</p>
+        </div>
+      </div>
+    )
+    })
     return (
       <div className="game-show-page grid-x grid-margin-x">
         <div className="cell small-24">
@@ -48,6 +66,8 @@ class BandShowPage extends Component {
         <div className="cell small-24 large-10 grid-y">
           <p className="game-attribute"><span className="game-attribute-title">{this.state.bandInfo.band_name}</span> {this.state.bandInfo.band_bio}</p>
         </div>
+        <h3>Shows</h3>
+        {concert}
       </div>
     )
   }

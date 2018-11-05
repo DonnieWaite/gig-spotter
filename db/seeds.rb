@@ -10,7 +10,8 @@
 
 band_attributes = [
  {band_name: 'Palm', bandcamp_url: "https://palmnewyork.bandcamp.com/", genre: 'Experimental Rock', band_bio: "Experimental rock band from New York", band_image: "https://f4.bcbits.com/img/0012386298_10.jpg"},
- {band_name: 'Frankie Cosmos', bandcamp_url: 'hhttps://ingridsuperstar.bandcamp.com/', genre: 'indie rock', band_image: 'https://f4.bcbits.com/img/a1643878260_10.jpg'}
+ {band_name: 'Frankie Cosmos', bandcamp_url: 'hhttps://ingridsuperstar.bandcamp.com/', genre: 'indie rock', band_image: 'https://f4.bcbits.com/img/a1643878260_10.jpg'},
+ {band_name: 'Luge' bandcamp_url: 'https://hugeluge.bandcamp.com/', genre: 'experimental', band_image: 'https://f4.bcbits.com/img/a3480225868_10.jpg' }
 ]
 band_attributes.each do |attribute|
  Band.create(attribute)

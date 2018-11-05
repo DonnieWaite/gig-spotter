@@ -10,6 +10,7 @@ import NewBookerPage from './pages/NewBookerPage'
 import BookerShowPage from './pages/BookerShowPage'
 import ConcertShowPage from './pages/ConcertShowPage'
 import NewConcertPage from './pages/NewConcertPage'
+import ConcertIndexPage from './pages/ConcertIndexPage'
 
 export const App = (props) => {
   return (
@@ -21,8 +22,9 @@ export const App = (props) => {
       <Route path='/bookers' component={BookerIndex}/>
       <Route path='/bookers/new' component={NewBookerPage}/>
       <Route path='/bookers/:id' component={BookerShowPage}/>
-      <Route path='/concert/:id' component={ConcertShowPage}/>
-      <Route path='/concert/new' component={NewConcertPage}/>
+      <Route path='/concerts' component={ConcertIndexPage}/>
+      <Route path='/concerts/:id' component={ConcertShowPage}/>
+      <Route path='/concerts/new' component={NewConcertPage}/>
     </Route>
   </Router>
   )
