@@ -7,7 +7,8 @@ const NavBar = props => {
     <div>
       <div className="navbar">
         <BackButton />
-        <Link to='/' className="back-button">Home</Link>
+        <Link to='/' className="back-button">Bands</Link>
+        <Link to='/bookers'> Bookers</Link>
       </div>
       <div>
         {props.children}
