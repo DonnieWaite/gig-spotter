@@ -5,10 +5,12 @@ class Api::V1::ConcertsController < ApplicationController
   end
 
   def create
-    binding.pry
-    new_concert = Concert.create(date_and_time: concert_params[:date_and_time], location: concert_params[:location], description: concert_params[:description], title: concert_params[:title], booker_id: concert_params[:booker_id], user: current_user)
+    new_concert_date_and_time = Date.parse(concert_params[:date]).to_datetime + Time.parse(concert_params[:time]).seconds_since_midnight.seconds
 
-    new_listing = Listing.create(band_id: concert_params[:band_id], concert_id: concert_params[new_concert.id])
+    new_concert = Concert.create(date_and_time: new_concert_date_and_time, location: concert_params[:location], description: concert_params[:description], title: concert_params[:title], booker_id: concert_params[:booker_id], user: current_user)
+
+
+    new_listing = Listing.create(band_id: concert_params[:band_id], concert_id: new_concert.id)
     render json: {
       concert: new_concert,
       listing: new_listing

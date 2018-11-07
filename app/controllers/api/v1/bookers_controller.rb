@@ -4,8 +4,11 @@ class Api::V1::BookersController < ApplicationController
   end
 
   def show
-    booker = [Booker.find(params[:id])]
-    render json: ActiveModel::Serializer::ArraySerializer.new(booker, { scope: {page: "show", user: current_user} })
+    @booker = Booker.find(params[:id])
+    render json: {
+      booker: @booker,
+      concerts: @booker.concerts
+    }
   end
 
   def create

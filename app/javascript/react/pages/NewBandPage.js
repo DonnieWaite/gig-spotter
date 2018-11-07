@@ -40,6 +40,7 @@ class NewBandPage extends Component {
   })
   .then(response => response.json())
   .then(formPayload => {
+    debugger
     this.setState({
       bands: this.state.bands.concat(formPayload)
     })
