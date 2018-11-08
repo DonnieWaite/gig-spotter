@@ -36,6 +36,7 @@ class BookerShowPage extends Component {
 
   render() {
     let concert = this.state.concerts.map(concert => {
+      let dateAndTime = moment(concert.date_and_time).format('MMMM Do YYYY, h:mm:ss a')
       return(
         <div className="game-show-page grid-x grid-margin-x" id={concert.id}>
           <div className="cell small-24">
@@ -45,7 +46,7 @@ class BookerShowPage extends Component {
             <p>{concert.description} </p>
           </div>
           <div className="cell small-24 large-10 grid-y">
-            <p className="game-attribute"><span className="game-attribute-title" >{concert.date_and_time}</span></p>
+            <p className="game-attribute"><span className="game-attribute-title" >{dateAndTime}</span></p>
             <p>{concert.location}</p>
           </div>
         </div>

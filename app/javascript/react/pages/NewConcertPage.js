@@ -3,7 +3,7 @@ import ConcertTitleField from '../components/ConcertTitleField'
 import ConcertDescriptionField from '../components/ConcertDescriptionField'
 import ConcertLocationField from '../components/ConcertLocationField'
 
-import moment from "moment";
+
 import { browserHistory } from 'react-router';
 
 
