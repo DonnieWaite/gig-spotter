@@ -52,9 +52,9 @@ class BandIndex extends Component {
     })
     return (
 
-      <div>
-      <h4 className="create-booker-or-band"><Link to={'/bookers/new'}>Make a Booker</Link></h4>
-      <h4 className="create-booker-or-band"><Link to={'/bands/new'}>Make a Band</Link></h4>
+      <div className="create-booker-and-band-div">
+      <button className="create-booker-or-band"><Link to={'/booker/new'}>Make a Booker</Link></button>
+      <button className="create-booker-or-band"><Link to={'/band/new'}>Make a Band</Link></button>
       <h2 className="band-title">Bands</h2>
       {bands}
       </div>

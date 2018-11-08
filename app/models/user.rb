@@ -9,6 +9,8 @@ class User < ApplicationRecord
   belongs_to :booker, optional: true
   belongs_to :band, optional: true
 
+  has_many :concerts
+
   validates :email, presence: true
   validates :encrypted_password, presence: true
   validates :birthday, presence: true

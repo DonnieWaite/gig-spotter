@@ -1,5 +1,6 @@
 class Concert < ApplicationRecord
   belongs_to :booker
+  belongs_to :user
   has_many :listings
   has_many :bands, through: :listings
 

@@ -17,11 +17,22 @@
 
 .create-booker-or-band {
   text-align: left;
-  font-family: Josefin Sans;
+  font-family: Amatic SC;
+  font-size:  40px;
+  background-color: black;
+  border: 3px solid lightblue;
 }
 
 .band-title {
   text-align: center;
-  font-family: Josefin Sans;
+  font-family: Amatic SC;
   font-style: bold;
+}
+
+.create-event-button {
+  text-align: right;
+  font-family: Amatic SC;
+  font-size:  40px;
+  background-color: black;
+  border: 3px solid lightblue;
 }

@@ -17,14 +17,14 @@ export const App = (props) => {
   <Router history={browserHistory}>
     <Route path='/' component={NavBar} >
       <IndexRoute component={BandIndex}/>
-      <Route path='bands/new' component={NewBandPage}/>
+      <Route path='band/new' component={NewBandPage}/>
       <Route path="/bands/:id" component={BandShowPage}/>
       <Route path='/bookers' component={BookerIndex}/>
-      <Route path='/bookers/new' component={NewBookerPage}/>
+      <Route path='/booker/new' component={NewBookerPage}/>
       <Route path='/bookers/:id' component={BookerShowPage}/>
       <Route path='/concerts' component={ConcertIndexPage}/>
       <Route path='/concerts/:id' component={ConcertShowPage}/>
-      <Route path='/concerts/new' component={NewConcertPage}/>
+      <Route path='/concert/new' component={NewConcertPage}/>
     </Route>
   </Router>
   )
