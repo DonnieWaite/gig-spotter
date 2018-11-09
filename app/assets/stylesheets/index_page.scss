@@ -15,8 +15,15 @@
 
 }
 
-.create-booker-or-band {
+.create-booker {
   text-align: left;
+  font-family: Amatic SC;
+  font-size:  40px;
+  background-color: black;
+  border: 3px solid lightblue;
+}
+.create-band {
+  text-align: right;
   font-family: Amatic SC;
   font-size:  40px;
   background-color: black;
@@ -27,6 +34,7 @@
   text-align: center;
   font-family: Amatic SC;
   font-style: bold;
+  font-size: 60px;
 }
 
 .create-event-button {
@@ -35,4 +43,8 @@
   font-size:  40px;
   background-color: black;
   border: 3px solid lightblue;
+}
+
+.band-bio {
+  text-align: center;
 }

@@ -67,10 +67,13 @@ class BandShowPage extends Component {
         </div>
         <div className="cell small-24 large-10 grid-y">
           <p className="game-attribute"><span className="game-attribute-title"></span> {this.state.bandInfo.band_bio}</p>
+          <a href={this.state.bandInfo.bandcamp_url} className="game-attribute"><span className="game-attribute-title"></span> {this.state.bandInfo.bandcamp_url}</a>
         </div>
-        <h3 className="band-title">Shows</h3>
-        {concert}
-        <button className="create-event-button"><Link to={'/concert/new'}>Create Event</Link></button>
+        <div>
+          <h3 className="band-title">Shows</h3>
+          {concert}
+          <button className="create-event-button"><Link to={'/concert/new'}>Create Event</Link></button>
+        </div>
       </div>
     )
   }

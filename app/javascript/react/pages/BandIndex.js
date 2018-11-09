@@ -6,7 +6,7 @@ class BandIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bands: []
+      bands: [],
     };
     this.fetchBands = this.fetchBands.bind(this)
   }
@@ -37,7 +37,16 @@ class BandIndex extends Component {
 
 
   render() {
+    let createBand = ''
+    let createBooker = ''
     let bands = this.state.bands.map(band => {
+      if (band.current_user !== null) {
+        createBand = <button className="create-band"><Link to={'/band/new'}>Make a Band</Link></button>
+        createBooker = <button className="create-band"><Link to={'/booker/new'}>Make a Booker</Link></button>
+      } else {
+        createBand = ''
+        createBooker = ''
+      }
       return(
         <div key={band.id} className="band-card grid-x grid-margin-x">
           <div className="cell small-12">
@@ -45,7 +54,7 @@ class BandIndex extends Component {
           </div>
           <div className="cell small-12">
             <h3><Link to={`/bands/${band.id}`}>{band.band_name}</Link></h3>
-            <p>{band.band_bio}</p>
+            <p className="band-bio">{band.band_bio}</p>
           </div>
         </div>
       )
@@ -53,10 +62,12 @@ class BandIndex extends Component {
     return (
 
       <div className="create-booker-and-band-div">
-      <button className="create-booker-or-band"><Link to={'/booker/new'}>Make a Booker</Link></button>
-      <button className="create-booker-or-band"><Link to={'/band/new'}>Make a Band</Link></button>
-      <h2 className="band-title">Bands</h2>
-      {bands}
+        <div>
+        {createBand}
+        {createBooker}
+        </div>
+        <h2 className="band-title">Bands</h2>
+        {bands}
       </div>
     )
   }
