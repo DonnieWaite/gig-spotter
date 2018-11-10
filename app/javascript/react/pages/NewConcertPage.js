@@ -74,29 +74,26 @@ class NewConcertPage extends Component {
     .then(response => {
       return response.json();
     })
-    .then(data => {
-      this.setState({ bands: data })
+    .then(response => {
+      this.setState({ bands: response.bands })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
 
     addNewConcert(formPayload){
-    let jsonStringInfo = JSON.stringify(formPayload)
-    fetch('/api/v1/concerts', {
-      method: 'POST',
-      body: jsonStringInfo,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json' },
-      credentials: 'same-origin'
-    })
-    .then(response => response.json())
-    .then(formPayload => {
-      this.setState({
-        concerts: this.state.concerts.concat(formPayload)
+      let jsonStringInfo = JSON.stringify(formPayload)
+      fetch('/api/v1/concerts', {
+        method: 'POST',
+        body: jsonStringInfo,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json' },
+        credentials: 'same-origin'
       })
-      browserHistory.push(`/`)
-    })
+      .then(response => response.json())
+      .then(response => {
+        browserHistory.push(`/concerts/${response.concert.id}`)
+      })
     }
 
 
@@ -136,15 +133,15 @@ class NewConcertPage extends Component {
   }
 
   handleSubmit(event) {
-  event.preventDefault()
-  let formPayload = {
-    title: this.state.concertTitle,
-    description: this.state.concertDescription,
-    location: this.state.concertLocation,
-    booker_id: this.state.bookerId,
-    date: this.state.date,
-    time: this.state.time,
-    band_id: this.state.bandId
+    event.preventDefault()
+    let formPayload = {
+      title: this.state.concertTitle,
+      description: this.state.concertDescription,
+      location: this.state.concertLocation,
+      booker_id: this.state.bookerId,
+      date: this.state.date,
+      time: this.state.time,
+      band_id: this.state.bandId
     }
     this.addNewConcert(formPayload)
   }

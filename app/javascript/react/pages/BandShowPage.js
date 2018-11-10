@@ -45,7 +45,9 @@ class BandShowPage extends Component {
       return(
       <div className="band-show-page grid-x grid-margin-x" id={concert.id}>
         <div className="cell small-24">
-          <h1 className="band-show-page-title">{concert.title}</h1>
+          <Link to={`/concerts/${concert.id}`}>
+            <h1 className="band-show-page-title">{concert.title}</h1>
+          </Link>
         </div>
         <div className="cell small-24 large-14">
           <p>{concert.description} </p>

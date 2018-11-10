@@ -8,13 +8,17 @@ class ConcertShowPage extends Component {
     super(props);
     this.state = {
       concert: {},
-      bands: [],
-      booker: {}
+      bandsPlaying: [],
+      bandsToSelect: [],
+      booker: {},
+      newListing: {}
     };
+    this.fetchConcert = this.fetchConcert.bind(this)
+    this.fetchBandsToSelect = this.fetchBandsToSelect.bind(this)
   }
 
-  componentDidMount() {
-    fetch(`/api/v1/concerts/${this.props.params.id}`)
+  fetchConcert() {
+    return fetch(`/api/v1/concerts/${this.props.params.id}`)
     .then(response => {
       if (response.ok) {
         return response;
@@ -31,25 +35,63 @@ class ConcertShowPage extends Component {
       let concert = data.concert
       let bands = data.bands
       let booker = data.booker
+      let can_user_edit = data.can_user_edit
       this.setState({
         concert: concert,
-        bands: bands,
-        booker: booker
+        bandsPlaying: bands,
+        booker: booker,
+        can_user_edit: can_user_edit
       })
+      return data
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+
+  fetchBandsToSelect() {
+    fetch(`/api/v1/bands`)
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(response => {
+      this.setState({ bandsToSelect: response.bands }, () => console.log(response.bands))
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  };
+
+  componentDidMount() {
+    this.fetchConcert()
+    this.fetchBandsToSelect()
+  }
+
+  componentDidUpdate() {
+    console.log(this.state)
   }
 
   render() {
     let dateAndTime = moment(this.state.concert.date_and_time).format('MMMM Do YYYY, h:mm a')
 
-    let bands = this.state.bands.map(band => {
+    let bandsPlaying = this.state.bandsPlaying.map(band => {
       return (
         <li key={band.id}>
           <Link to={`/bands/${band.id}`}>{band.band_name}</Link>
         </li>
       )
     })
+
+    // let addBandToConcertForm = (
+    //   if this.state.can_user_edit the concert, render a little form with *only* a band dropdown
+    //    submit with a new "add band" method that posts to "concerts/:concert_id/add_band" with the band_id in its payload
+    // )
 
     return (
       <div className='row'>
@@ -64,7 +106,7 @@ class ConcertShowPage extends Component {
         <div className='larg-6 columns'>
           <h2 className='band-title'>Bands</h2>
           <ul>
-            {bands}
+            {bandsPlaying}
           </ul>
         </div>
         <div>
