@@ -41,7 +41,7 @@ class BandShowPage extends Component {
 
   render() {
     let concert = this.state.concerts.map(concert => {
-      let dateAndTime = moment(concert.date_and_time).format('MMMM Do YYYY, h:mm:ss a')
+      let dateAndTime = moment(concert.date_and_time).format('MMMM Do YYYY, h:mm a')
       return(
       <div className="band-show-page grid-x grid-margin-x" id={concert.id}>
         <div className="cell small-24">

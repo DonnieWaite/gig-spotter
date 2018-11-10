@@ -19,6 +19,15 @@ class Api::V1::ConcertsController < ApplicationController
     }
   end
 
+  def show
+    @concert = Concert.find(params[:id])
+    render json: {
+      concert: @concert,
+      booker: @concert.booker,
+      bands: @concert.bands
+    }
+  end
+
   private
 
   def concert_params
