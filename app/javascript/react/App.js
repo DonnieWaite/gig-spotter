@@ -14,19 +14,19 @@ import ConcertIndexPage from './pages/ConcertIndexPage'
 
 export const App = (props) => {
   return (
-  <Router history={browserHistory}>
-    <Route path='/' component={NavBar} >
-      <IndexRoute component={BandIndex}/>
-      <Route path='band/new' component={NewBandPage}/>
-      <Route path="/bands/:id" component={BandShowPage}/>
-      <Route path='/bookers' component={BookerIndex}/>
-      <Route path='/booker/new' component={NewBookerPage}/>
-      <Route path='/bookers/:id' component={BookerShowPage}/>
-      <Route path='/concerts' component={ConcertIndexPage}/>
-      <Route path='/concerts/:id' component={ConcertShowPage}/>
-      <Route path='/concert/new' component={NewConcertPage}/>
-    </Route>
-  </Router>
+    <Router history={browserHistory}>
+      <Route path='/' component={NavBar} >
+        <IndexRoute component={BandIndex} />
+        <Route path='band/new' component={NewBandPage}/>
+        <Route path="/bands/:id" component={BandShowPage}/>
+        <Route path='/bookers' component={BookerIndex}/>
+        <Route path='/booker/new' component={NewBookerPage}/>
+        <Route path='/bookers/:id' component={BookerShowPage}/>
+        <Route path='/concerts' component={ConcertIndexPage}/>
+        <Route path='/concerts/:id' component={ConcertShowPage}/>
+        <Route path='/concert/new' component={NewConcertPage}/>
+      </Route>
+    </Router>
   )
 }
 
