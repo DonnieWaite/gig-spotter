@@ -164,9 +164,9 @@ class NewConcertPage extends Component {
         )
       })
       return (
-        <div>
-          <h1>Create A Concert!</h1>
-          <form onSubmit={this.handleSubmit}>
+        <div className='form-div'>
+          <h1 className='form-title'>Create A Concert!</h1>
+          <form className='form' onSubmit={this.handleSubmit}>
             <ConcertTitleField
               content={this.state.title}
               label="Title"

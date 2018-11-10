@@ -43,22 +43,22 @@ class BandShowPage extends Component {
     let concert = this.state.concerts.map(concert => {
       let dateAndTime = moment(concert.date_and_time).format('MMMM Do YYYY, h:mm:ss a')
       return(
-      <div className="game-show-page grid-x grid-margin-x" id={concert.id}>
+      <div className="band-show-page grid-x grid-margin-x" id={concert.id}>
         <div className="cell small-24">
-          <h1 className="game-show-page-title">{concert.title}</h1>
+          <h1 className="band-show-page-title">{concert.title}</h1>
         </div>
         <div className="cell small-24 large-14">
           <p>{concert.description} </p>
         </div>
         <div className="cell small-24 large-10 grid-y">
-          <p className="game-attribute"><span className="game-attribute-title" >{dateAndTime}</span></p>
+          <p className="band-attribute"><span className="band-attribute-title" >{dateAndTime}</span></p>
           <p>{concert.location}</p>
         </div>
       </div>
     )
     })
     return (
-      <div className="game-show-page grid-x grid-margin-x">
+      <div className="band-show-page grid-x grid-margin-x">
         <div className="cell small-24">
           <h1 className="band-title">{this.state.bandInfo.band_name}</h1>
         </div>
@@ -66,8 +66,8 @@ class BandShowPage extends Component {
           <img src={this.state.bandInfo.band_image} width="500" height="500"/>
         </div>
         <div className="cell small-24 large-10 grid-y">
-          <p className="game-attribute"><span className="game-attribute-title"></span> {this.state.bandInfo.band_bio}</p>
-          <a href={this.state.bandInfo.bandcamp_url} className="game-attribute"><span className="game-attribute-title"></span> {this.state.bandInfo.bandcamp_url}</a>
+          <p className="band-attribute"><span className="band-attribute-title"></span> {this.state.bandInfo.band_bio}</p>
+          <a href={this.state.bandInfo.bandcamp_url} className="band-attribute"><span className="game-attribute-title"></span> {this.state.bandInfo.bandcamp_url}</a>
         </div>
         <div>
           <h3 className="band-title">Shows</h3>

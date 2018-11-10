@@ -66,9 +66,9 @@ let formPayload = {
 
   render() {
     return (
-      <div>
-      <h1>Create A Booker</h1>
-      <form onSubmit={this.handleSubmit}>
+      <div className='form-div'>
+      <h1 className='form-title'>Create A Booker</h1>
+      <form className='form' onSubmit={this.handleSubmit}>
         <OrganizationNameField
           content={this.state.organizationName}
           label="Organization Name"
