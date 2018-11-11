@@ -43,6 +43,20 @@ class BookerShowPage extends Component {
     let concerts = this.state.concerts.map(concert => {
       return <ConcertTile key={concert.id} concert={concert}/>
     })
+
+    let concertsSection = (
+      <h5 className="band-title center">This booker hasn't booked any concerts</h5>
+    )
+
+    if (concerts.length > 0) {
+      concertsSection = (
+        <div>
+          <h3 className="band-title center">Shows</h3>
+          {concerts}
+        </div>
+      )
+    }
+
     return (
       <div>
         <div className="band-card grid-x grid-margin-x">
@@ -56,8 +70,7 @@ class BookerShowPage extends Component {
             <p className="band-attribute"><span className="band-attribute-title">{this.state.booker.booker_name}</span> {this.state.booker.booker_bio}</p>
           </div>
         </div>
-        <h3 className="band-title center">Shows</h3>
-        {concerts}
+        {concertsSection}
       </div>
     )
   }
