@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       get "bands/:band_id/concerts", to: "bands#concerts"
 
+      post "concerts/:concert_id/add_band", to: "concerts#add_band"
     end
   end
 

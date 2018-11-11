@@ -6,12 +6,13 @@ class BandIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bands: []
+      bands: [],
+      user: null
     };
-    this.fetchBands = this.fetchBands.bind(this)
+    this.fetchBandsAndUser = this.fetchBandsAndUser.bind(this)
   }
 
-  fetchBands() {
+  fetchBandsAndUser() {
     fetch(`/api/v1/bands`)
     .then(response => {
       if (response.ok) {
@@ -26,17 +27,42 @@ class BandIndex extends Component {
       return response.json();
     })
     .then(data => {
-      this.setState({ bands: data })
+      this.setState({
+        bands: data.bands,
+        user: data.user
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
-    };
+  }
 
-    componentDidMount(){
-      this.fetchBands()
-    }
-
+  componentDidMount() {
+    this.fetchBandsAndUser()
+  }
 
   render() {
+    let createBandButton = null
+    let createBookerButton = null
+
+    let user = this.state.user
+
+    if (user !== null) {
+      if (!user.has_band) {
+        createBandButton = (
+          <button className="create-band">
+            <Link to={'/band/new'}>Make a Band</Link>
+          </button>
+        )
+      }
+
+      if (!user.has_booker) {
+        createBookerButton = (
+          <button className="create-band">
+            <Link to={'/booker/new'}>Make a Booker</Link>
+          </button>
+        )
+      }
+    }
+
     let bands = this.state.bands.map(band => {
       return(
         <div key={band.id} className="band-card grid-x grid-margin-x">
@@ -45,18 +71,20 @@ class BandIndex extends Component {
           </div>
           <div className="cell small-12">
             <h3><Link to={`/bands/${band.id}`}>{band.band_name}</Link></h3>
-            <p>{band.band_bio}</p>
+            <p className="band-bio">{band.band_bio}</p>
           </div>
         </div>
       )
     })
-    return (
 
+    return (
       <div className="create-booker-and-band-div">
-      <button className="create-booker-or-band"><Link to={'/booker/new'}>Make a Booker</Link></button>
-      <button className="create-booker-or-band"><Link to={'/band/new'}>Make a Band</Link></button>
-      <h2 className="band-title">Bands</h2>
-      {bands}
+        <div>
+          {createBandButton}
+          {createBookerButton}
+        </div>
+        <h2 className="band-title">Bands</h2>
+        {bands}
       </div>
     )
   }

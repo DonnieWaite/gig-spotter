@@ -2,19 +2,34 @@ class Api::V1::BandsController < ApplicationController
 
   def index
     all_bands = Band.all
-    render json: ActiveModel::Serializer::ArraySerializer.new(all_bands)
+
+    user_response = nil
+
+    if current_user
+      user_response = current_user.attributes.merge({
+        has_band: current_user.has_band?,
+        has_booker: current_user.has_booker?
+      })
+    end
+
+    render json: {
+      bands: all_bands,
+      user: user_response
+    }
   end
 
   def show
     @band = Band.find(params[:id])
     render json: {
-  band: @band,
-  concerts: @band.concerts
-}
+      band: @band,
+      concerts: @band.concerts
+    }
   end
 
   def create
-    new_band = Band.create(band_name: band_params[:band_name], bandcamp_url: band_params[:bandcamp_url], genre: band_params[:genre], band_bio: band_params[:band_bio], band_image: band_params[:band_image], user: current_user)
+    new_band = Band.create(
+      band_params.merge({user: current_user})
+    )
     render json: new_band
   end
 
@@ -22,7 +37,7 @@ class Api::V1::BandsController < ApplicationController
   private
 
   def band_params
-    params.permit(:band_name, :bandcamp_url, :genre, :band_bio, :band_image )
+    params.permit(:band_name, :bandcamp_url, :genre, :band_bio, :band_image)
   end
 
   def authorize_user

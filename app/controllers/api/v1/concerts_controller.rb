@@ -19,6 +19,23 @@ class Api::V1::ConcertsController < ApplicationController
     }
   end
 
+  def show
+    @concert = Concert.find(params[:id])
+    render json: {
+      concert: @concert,
+      booker: @concert.booker,
+      bands: @concert.bands,
+      can_user_edit: @concert.can_user_edit?(current_user)
+    }
+  end
+
+  def add_band
+    new_listing = Listing.create(band_id: params[:band_id], concert_id: params[:concert_id])
+    render json: {
+      band: new_listing.band
+    }
+  end
+
   private
 
   def concert_params
@@ -30,9 +47,5 @@ class Api::V1::ConcertsController < ApplicationController
       raise ActionController::RoutingError.new("Not Found")
       redirect_to root_path
     end
-  end
-
-  def current_user_access
-    current_user.id == Concert.find(params[:id]).user_id
   end
 end
