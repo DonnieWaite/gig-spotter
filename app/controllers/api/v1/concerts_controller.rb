@@ -30,7 +30,10 @@ class Api::V1::ConcertsController < ApplicationController
   end
 
   def add_band
-    # create a new listing with the band_id and concert_id from params!
+    new_listing = Listing.create(band_id: params[:band_id], concert_id: params[:concert_id])
+    render json: {
+      band: new_listing.band
+    }
   end
 
   private

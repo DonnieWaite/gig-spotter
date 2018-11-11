@@ -13,7 +13,7 @@ class BandShowPage extends Component {
   }
 
   fetchBand(){
-    fetch(`/api/v1/bands/${this.props.params.id}`)
+    fetch(`/api/v1/bands/${this.props.params.bandId}`)
     .then(response => {
       if (response.ok) {
         return response;

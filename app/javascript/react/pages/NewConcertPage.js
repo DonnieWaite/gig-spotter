@@ -151,12 +151,12 @@ class NewConcertPage extends Component {
     render() {
       let bookers = this.state.bookers.map(booker => {
         return(
-          <option id={booker.id} value={booker.id}>{booker.organization_name}</option>
+          <option key={booker.id} value={booker.id}>{booker.organization_name}</option>
         )
       })
       let bands = this.state.bands.map( band => {
         return(
-              <option id={band.id} value={band.id}>{band.band_name}</option>
+              <option key={band.id} value={band.id}>{band.band_name}</option>
 
         )
       })

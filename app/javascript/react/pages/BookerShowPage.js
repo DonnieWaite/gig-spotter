@@ -13,7 +13,7 @@ class BookerShowPage extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/bookers/${this.props.params.id}`)
+    fetch(`/api/v1/bookers/${this.props.params.bookerId}`)
     .then(response => {
       if (response.ok) {
         return response;

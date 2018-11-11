@@ -18,12 +18,12 @@ export const App = (props) => {
       <Route path='/' component={NavBar} >
         <IndexRoute component={BandIndex} />
         <Route path='band/new' component={NewBandPage}/>
-        <Route path="/bands/:id" component={BandShowPage}/>
+        <Route path="/bands/:bandId" component={BandShowPage}/>
         <Route path='/bookers' component={BookerIndex}/>
         <Route path='/booker/new' component={NewBookerPage}/>
-        <Route path='/bookers/:id' component={BookerShowPage}/>
+        <Route path='/bookers/:bookerId' component={BookerShowPage}/>
         <Route path='/concerts' component={ConcertIndexPage}/>
-        <Route path='/concerts/:id' component={ConcertShowPage}/>
+        <Route path='/concerts/:concertId' component={ConcertShowPage}/>
         <Route path='/concert/new' component={NewConcertPage}/>
       </Route>
     </Router>

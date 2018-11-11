@@ -11,14 +11,18 @@ class ConcertShowPage extends Component {
       bandsPlaying: [],
       bandsToSelect: [],
       booker: {},
-      newListing: {}
+      newListing: {},
+      canUserEdit: false,
+      selectedBandId: ""
     };
     this.fetchConcert = this.fetchConcert.bind(this)
     this.fetchBandsToSelect = this.fetchBandsToSelect.bind(this)
+    this.handleChangeSelectedBand = this.handleChangeSelectedBand.bind(this)
+    this.handleSubmitNewBand = this.handleSubmitNewBand.bind(this)
   }
 
   fetchConcert() {
-    return fetch(`/api/v1/concerts/${this.props.params.id}`)
+    return fetch(`/api/v1/concerts/${this.props.params.concertId}`)
     .then(response => {
       if (response.ok) {
         return response;
@@ -40,13 +44,16 @@ class ConcertShowPage extends Component {
         concert: concert,
         bandsPlaying: bands,
         booker: booker,
-        can_user_edit: can_user_edit
+        canUserEdit: can_user_edit
       })
       return data
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handleChangeSelectedBand(event) {
+    this.setState({ selectedBandId: event.target.value })
+  }
 
   fetchBandsToSelect() {
     fetch(`/api/v1/bands`)
@@ -73,8 +80,25 @@ class ConcertShowPage extends Component {
     this.fetchBandsToSelect()
   }
 
-  componentDidUpdate() {
-    console.log(this.state)
+  handleSubmitNewBand(e) {
+    e.preventDefault()
+    let requestBody = JSON.stringify({ band_id: this.state.selectedBandId })
+    fetch(`/api/v1/concerts/${this.props.params.concertId}/add_band`, {
+      method: 'POST',
+      body: requestBody,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json' },
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(response => {
+      this.setState({
+        bandsPlaying: this.state.bandsPlaying.concat(response.band)
+      })
+    })
   }
 
   render() {
@@ -88,13 +112,26 @@ class ConcertShowPage extends Component {
       )
     })
 
-    // let addBandToConcertForm = (
-    //   if this.state.can_user_edit the concert, render a little form with *only* a band dropdown
-    //    submit with a new "add band" method that posts to "concerts/:concert_id/add_band" with the band_id in its payload
-    // )
+    let bandIdsPlayingConcert = this.state.bandsPlaying.map(band => band.id)
+    let nonDuplicateBands = this.state.bandsToSelect.filter(band => {
+      return !bandIdsPlayingConcert.includes(band.id)
+    })
+
+    let addBandToConcertForm = () => (
+      <form className='form-div' onSubmit={this.handleSubmitNewBand}>
+        <select value={this.state.selectedBandId} name="band_id" onChange={this.handleChangeSelectedBand}>
+          <option disabled selected value=""> -- select a band -- </option>
+          {nonDuplicateBands.map(band => {
+            return(<option key={band.id} value={band.id}>{band.band_name}</option>)
+          })}
+        </select>
+        <input className="button" type="submit" value="Add Band!"/>
+      </form>
+    )
+
 
     return (
-      <div className='row'>
+      <div className='grid-x'>
         <div className='large-6 columns'>
           <h1>{this.state.concert.title}</h1>
         </div>
@@ -109,6 +146,7 @@ class ConcertShowPage extends Component {
             {bandsPlaying}
           </ul>
         </div>
+        {this.state.canUserEdit ? addBandToConcertForm() : null}
         <div>
           <Link to={`/bookers/${this.state.booker.id}`}>
             <h3 className='band-title'>Booked by: {this.state.booker.organization_name}</h3>
