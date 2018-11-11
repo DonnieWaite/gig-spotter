@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router"
+import ConcertTile from '../components/ConcertTile'
 
 import moment from "moment";
 
@@ -40,23 +41,7 @@ class BookerShowPage extends Component {
 
   render() {
     let concerts = this.state.concerts.map(concert => {
-      let dateAndTime = moment(concert.date_and_time).format('MMMM Do YYYY, h:mm a')
-      return(
-        <div className="band-show-page grid-x grid-margin-x" id={concert.id}>
-          <div className="cell small-24">
-            <Link to={`/concerts/${concert.id}`}>
-              <h1 className="">{concert.title}</h1>
-            </Link>
-          </div>
-          <div className="cell small-24 large-14">
-            <p>{concert.description} </p>
-          </div>
-          <div className="cell small-24 large-10 grid-y">
-            <p className="band-attribute"><span className="band-attribute-title" >{dateAndTime}</span></p>
-            <p>{concert.location}</p>
-          </div>
-        </div>
-      )
+      return <ConcertTile key={concert.id} concert={concert}/>
     })
     return (
       <div>
@@ -71,7 +56,7 @@ class BookerShowPage extends Component {
             <p className="band-attribute"><span className="band-attribute-title">{this.state.booker.booker_name}</span> {this.state.booker.booker_bio}</p>
           </div>
         </div>
-        <h3 className="band-title">Shows</h3>
+        <h3 className="band-title center">Shows</h3>
         {concerts}
       </div>
     )
