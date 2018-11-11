@@ -131,16 +131,16 @@ class ConcertShowPage extends Component {
 
 
     return (
-      <div className='grid-x'>
-        <div className='large-6 columns'>
+      <div className='grid-x grid-margin-x small-10 small-centered columns center'>
+        <div className="center">
           <h1>{this.state.concert.title}</h1>
         </div>
-        <div className='concert-details medium-4 colums'>
+        <div className='concert-details'>
           <p>{this.state.concert.description}</p>
           <p>{dateAndTime}</p>
           <p>{this.state.concert.location}</p>
         </div>
-        <div className='larg-6 columns'>
+        <div className='large-6 columns'>
           <h2 className='band-title'>Bands</h2>
           <ul>
             {bandsPlaying}

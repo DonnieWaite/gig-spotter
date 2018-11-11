@@ -14,8 +14,9 @@ import ConcertIndexPage from './pages/ConcertIndexPage'
 
 export const App = (props) => {
   return (
-    <Router history={browserHistory}>
-      <Route path='/' component={NavBar} >
+    <div className="margin-bottom-xl">
+      <Router history={browserHistory}>
+        <Route path='/' component={NavBar} >
         <IndexRoute component={BandIndex} />
         <Route path='band/new' component={NewBandPage}/>
         <Route path="/bands/:bandId" component={BandShowPage}/>
@@ -27,6 +28,7 @@ export const App = (props) => {
         <Route path='/concert/new' component={NewConcertPage}/>
       </Route>
     </Router>
+    </div>
   )
 }
 

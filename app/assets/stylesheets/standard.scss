@@ -11,6 +11,10 @@
   background-image: linear-gradient(gray, black);
 }
 
+ul {
+  list-style: none;
+}
+
 form{
   margin: 0px;
   padding: 0px;
@@ -65,11 +69,11 @@ form{
 
 input.button {
   margin: 20px;
-  border-radius: 15%;
+  border-radius: 5px;
 }
 
 button.button {
-  border-radius: 15%;
+  border-radius: 5px;
 }
 
 .button-group {
