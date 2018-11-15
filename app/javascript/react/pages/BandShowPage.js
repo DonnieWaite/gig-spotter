@@ -8,7 +8,8 @@ class BandShowPage extends Component {
     super(props);
     this.state = {
       bandInfo: [],
-      concerts: []
+      concerts: [],
+      user: []
     };
     this.fetchBand = this.fetchBand.bind(this)
   }
@@ -30,8 +31,12 @@ class BandShowPage extends Component {
     .then(data => {
       let band = data.band
       let concert = data.concerts
-      this.setState({ bandInfo: band })
-      this.setState( { concerts: concert})
+      let user = data.user
+      this.setState({
+        bandInfo: band,
+        concerts: concert,
+        user: user
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
@@ -73,6 +78,7 @@ class BandShowPage extends Component {
           </div>
           <div className="cell width-full margin-top-sm center small-24 large-10 grid-y">
             <p className="band-attribute center"><span className="band-attribute-title"></span> {this.state.bandInfo.band_bio}</p>
+            <p className="band-attribute center"><span className="band-attribute-title"></span> {this.state.user.email}</p>
             <a href={this.state.bandInfo.bandcamp_url} className="band-attribute"><span className="game-attribute-title"></span> {this.state.bandInfo.bandcamp_url}</a>
           </div>
         </div>
