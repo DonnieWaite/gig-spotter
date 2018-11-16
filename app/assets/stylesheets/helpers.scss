@@ -1,0 +1,57 @@
+.center {
+  text-align: center;
+}
+
+.width-full {
+  width: 100%;
+}
+
+// spacing helpers, defined in loops
+
+$spacing-properties: (
+  'padding',
+  'margin'
+);
+
+$spacing-directions: (
+  null,
+  '-top',
+  '-right',
+  '-bottom',
+  '-left',
+);
+
+$spacing-sizes: (
+  '-xxs': 2px,
+  '-xs': 4px,
+  '-sm': 8px,
+  '-md': 16px,
+  '-lg': 24px,
+  '-xl': 32px,
+  '-none': 0
+) !default;
+
+// this generates classes like padding-top-lg, etc
+@each $property in $spacing-properties {
+  @each $direction in $spacing-directions {
+    @each $size, $value in $spacing-sizes {
+      .#{$property}#{$direction}#{$size} {
+        #{$property}#{$direction}: $value !important;
+      }
+    }
+  }
+}
+
+// this generates classes like padding-x-lg, etc
+@each $property in $spacing-properties {
+  @each $size, $value in $spacing-sizes {
+    .#{$property}-x#{$size} {
+      #{$property}-left: $value !important;
+      #{$property}-right: $value !important;
+    }
+    .#{$property}-y#{$size} {
+      #{$property}-top: $value !important;
+      #{$property}-bottom: $value !important;
+    }
+  }
+}

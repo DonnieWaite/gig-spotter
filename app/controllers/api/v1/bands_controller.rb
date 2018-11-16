@@ -22,7 +22,8 @@ class Api::V1::BandsController < ApplicationController
     @band = Band.find(params[:id])
     render json: {
       band: @band,
-      concerts: @band.concerts
+      concerts: @band.concerts,
+      user: @band.user
     }
   end
 

@@ -1,10 +1,13 @@
 .band-show-page {
   margin-bottom: 30px;
   text-align: center;
-  border: 3px solid lightgray;
+  border: 2px solid lightgray;
   width: 35em;
   margin: auto;
-  background-color: white;
+  margin-top: 6px;
+  background-color: #fafafa;
+  box-shadow: 8px 5px 10px #dce7e4;
+  border-radius: 7px;
 }
 
 .band-show-page-title{
@@ -17,7 +20,7 @@
 }
 
 .band-attribute{
-  margin: 0;
+  margin-bottom: 7px;
   text-align: center;
 }
 
