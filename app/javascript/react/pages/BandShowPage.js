@@ -9,7 +9,8 @@ class BandShowPage extends Component {
     this.state = {
       bandInfo: [],
       concerts: [],
-      user: []
+      user: [],
+      currentUser: []
     };
     this.fetchBand = this.fetchBand.bind(this)
   }
@@ -29,13 +30,15 @@ class BandShowPage extends Component {
       return response.json();
     })
     .then(data => {
+      let currentUser = data.current_user
       let band = data.band
       let concert = data.concerts
       let user = data.user
       this.setState({
         bandInfo: band,
         concerts: concert,
-        user: user
+        user: user,
+        currentUser: currentUser
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -46,6 +49,10 @@ class BandShowPage extends Component {
 }
 
   render() {
+    let editBandLink = ""
+    if (this.state.currentUser.id === this.state.user.id) {
+      editBandLink = <Link to={`/bands/${this.props.params.bandId}/edit`}>Edit band</Link>
+    }
     let concerts = this.state.concerts.map(concert => {
       return <ConcertTile key={concert.id} concert={concert} />
     })
@@ -69,6 +76,7 @@ class BandShowPage extends Component {
 
     return (
       <div>
+        {editBandLink}
         <div className="band-show-page padding-bottom-md grid-x grid-margin-x">
           <div className="cell small-24">
             <h1 className="band-title">{this.state.bandInfo.band_name}</h1>

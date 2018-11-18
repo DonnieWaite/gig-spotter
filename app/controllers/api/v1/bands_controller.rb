@@ -23,7 +23,8 @@ class Api::V1::BandsController < ApplicationController
     render json: {
       band: @band,
       concerts: @band.concerts,
-      user: @band.user
+      user: @band.user,
+      current_user: current_user
     }
   end
 
@@ -34,6 +35,13 @@ class Api::V1::BandsController < ApplicationController
     render json: new_band
   end
 
+  def update
+    @band = Band.find(params[:id])
+    @band.update_attributes(band_params)
+    render json: {
+      band: @band
+    }
+  end
 
   private
 
