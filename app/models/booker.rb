@@ -5,5 +5,5 @@ class Booker < ApplicationRecord
   has_many :listings, through: :concerts
   has_many :bands, through: :listings
 
-  validates :organization_name, presence: true 
+  validates :organization_name, presence: true
 end

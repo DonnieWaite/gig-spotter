@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :bands, only: [:index, :show, :create]
+      resources :bands, only: [:index, :show, :create, :update]
       resources :bookers, only: [:index, :show, :create]
       resources :concerts, only: [:index, :show, :create]
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root 'homes#index'
   get '/bands/:id', to: 'homes#index'
   get '/band/new', to: 'homes#index'
+  get '/band/:id/edit' , to: 'homes#index'
   get '/bookers', to: 'homes#index'
   get '/bookers/:id', to: 'homes#index'
   get '/booker/new', to: 'homes#index'

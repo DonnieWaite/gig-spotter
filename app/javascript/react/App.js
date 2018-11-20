@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import BandIndex from './pages/BandIndex'
 import NewBandPage from './pages/NewBandPage'
 import BandShowPage from './pages/BandShowPage'
+import EditBandPage from './pages/EditBandPage'
 import BookerIndex from './pages/BookerIndex'
 import NewBookerPage from './pages/NewBookerPage'
 import BookerShowPage from './pages/BookerShowPage'
@@ -20,6 +21,7 @@ export const App = (props) => {
         <IndexRoute component={BandIndex} />
         <Route path='band/new' component={NewBandPage}/>
         <Route path="/bands/:bandId" component={BandShowPage}/>
+        <Route path="/band/:bandId/edit" component={EditBandPage}/>
         <Route path='/bookers' component={BookerIndex}/>
         <Route path='/booker/new' component={NewBookerPage}/>
         <Route path='/bookers/:bookerId' component={BookerShowPage}/>
