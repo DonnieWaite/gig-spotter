@@ -1,5 +1,7 @@
 class Api::V1::BandsController < ApplicationController
 
+before_action :authenticate_user_for_band, only: [:update]
+
   def index
     all_bands = Band.all
 
@@ -37,13 +39,19 @@ class Api::V1::BandsController < ApplicationController
 
   def update
     @band = Band.find(params[:id])
-    @band.update_attributes(band_params)
+    @band.update!(band_params)
     render json: {
       band: @band
     }
   end
 
   private
+
+  def authenticate_user_for_band
+    if (Band.find(params[:id]).id != current_user.band_id)
+      head 401 and return
+    end
+  end
 
   def band_params
     params.permit(:band_name, :bandcamp_url, :genre, :band_bio, :band_image)

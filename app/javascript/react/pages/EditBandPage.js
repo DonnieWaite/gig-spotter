@@ -52,14 +52,11 @@ class NewBandPage extends Component {
     })
     .then(response => response.json())
     .then(response => {
-      debugger
       browserHistory.push(`/`)
     })
   }
 
-  componentDidMount() {
-    this.getBand()
-  }
+
 
   render() {
     return (
