@@ -65,7 +65,7 @@ class BandIndex extends Component {
 
     let bands = this.state.bands.map(band => {
       return(
-        <div key={band.id} className="band-card grid-x grid-margin-x">
+        <div key={band.id} className="band-card">
           <div className="cell small-12">
             <img className="band-promo-image-index" src={band.band_image} />
           </div>

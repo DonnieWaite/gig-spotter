@@ -1,6 +1,7 @@
 class Api::V1::BandsController < ApplicationController
 
-before_action :authenticate_user_for_band, only: [:update]
+  before_action :set_band!, only: [:update, :show]
+  before_action :authenticate_user_for_band!, only: [:update]
 
   def index
     all_bands = Band.all
@@ -21,7 +22,6 @@ before_action :authenticate_user_for_band, only: [:update]
   end
 
   def show
-    @band = Band.find(params[:id])
     render json: {
       band: @band,
       concerts: @band.concerts,
@@ -38,7 +38,6 @@ before_action :authenticate_user_for_band, only: [:update]
   end
 
   def update
-    @band = Band.find(params[:id])
     @band.update!(band_params)
     render json: {
       band: @band
@@ -47,8 +46,14 @@ before_action :authenticate_user_for_band, only: [:update]
 
   private
 
-  def authenticate_user_for_band
-    if (Band.find(params[:id]).id != current_user.band_id)
+  def set_band!
+    unless @band = Band.find_by(id: params[:id])
+      head 404 and return
+    end
+  end
+
+  def authenticate_user_for_band!
+    if @band.id != current_user.band_id
       head 401 and return
     end
   end

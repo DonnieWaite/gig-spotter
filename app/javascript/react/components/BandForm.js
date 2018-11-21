@@ -63,6 +63,7 @@ class BandForm extends Component {
     return (
       <form className='form' onSubmit={(event) => this.handleSubmit(event, this.state)}>
         <BandNameField
+          bandName={this.props.bandName}
           content={this.state.bandName}
           label="Band Name"
           name="band_name"

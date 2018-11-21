@@ -56,13 +56,17 @@ class NewBandPage extends Component {
     })
   }
 
-
+componentDidMount() {
+  this.getBand()
+}
 
   render() {
     return (
       <div className='form-div'>
         <h1 className='form-title'>Edit {this.state.band.band_name} </h1>
-        <BandForm handleSubmit={this.editBand} />
+        <BandForm
+          bandName={this.state.band.band_name}
+          handleSubmit={this.editBand} />
       </div>
     )
   }
