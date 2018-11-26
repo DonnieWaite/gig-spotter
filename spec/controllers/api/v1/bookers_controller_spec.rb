@@ -18,7 +18,7 @@ RSpec.describe Api::V1::BookersController, type: :controller do
         expect(response.status).to eq 200
         expect(response.content_type).to eq "application/json"
         expect(returned_json.length).to eq 1
-        expect(returned_json[0]["organization_name"]).to eq "Very helpful!"
+        expect(returned_json["bookers"][0]["organization_name"]).to eq "Very helpful!"
       end
     end
 
