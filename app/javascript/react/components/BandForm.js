@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import BandNameField from '../components/BandNameField'
-import BandBioField from '../components/BandBioField'
-import BandImageField from '../components/BandImageField'
-import BandCampUrlField from '../components/BandCampUrlField'
-import GenreField from '../components/GenreField'
-
 import { browserHistory } from 'react-router';
 
 
@@ -12,11 +6,11 @@ class BandForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bandName: '',
-      bandBio: '',
-      bandImage: '',
-      bandCampUrl: '',
-      genre: ''
+      bandName: props.bandName,
+      bandBio: props.bandBio,
+      bandImage: props.bandImage,
+      bandCampUrl: props.bandcampUrl,
+      genre: props.genre
     };
     this.handleBandNameChange = this.handleBandNameChange.bind(this)
     this.handleBandBioChange = this.handleBandBioChange.bind(this)
@@ -62,45 +56,55 @@ class BandForm extends Component {
   render() {
     return (
       <form className='form' onSubmit={(event) => this.handleSubmit(event, this.state)}>
-        <BandNameField
-          content={this.state.bandName}
-          label="Band Name"
-          name="band_name"
-          id={this.state.id}
-          handleBandNameChange={this.handleBandNameChange}
-        />
-        <BandBioField
-          content={this.state.bandBio}
-          label="Bio"
-          name="booker_bio"
-          id={this.state.id}
-          handleBandBioChange={this.handleBandBioChange}
-        />
-        <BandImageField
-          content={this.state.bandImage}
-          label="Image url"
-          name="band_image"
-          id={this.state.id}
-          handleBandImageChange={this.handleBandImageChange}
-        />
-        <BandCampUrlField
-          content={this.state.bandCampUrl}
-          label="Bandcamp Url"
-          name="bandcamp_url"
-          id={this.state.id}
-          handleBandCampUrlChange={this.handleBandCampUrlChange}
-        />
-        <GenreField
-          content={this.state.genre}
-          label="Genre"
-          name="genre"
-          id={this.state.id}
-          handleGenreChange={this.handleGenreChange}
-        />
+        <label>Band Name
+          <input
+            label="Band Name"
+            name="band_name"
+            type='text'
+            value={this.state.bandName}
+            onChange={this.handleBandNameChange}
+          />
+        </label>
+        <label>Bio
+          <input
+            label="Band Bio"
+            name="band_bio"
+            type='text'
+            value={this.state.bandBio}
+            onChange={this.handleBandBioChange}
+          />
+        </label>
+        <label>Image url
+          <input
+            label="Image url"
+            name="band_image"
+            type='text'
+            value={this.state.bandImage}
+            onChange={this.handleBandImageChange}
+          />
+        </label>
+        <label>Bandcamp url
+          <input
+            label="Bandcamp url"
+            name="bandcamp_url"
+            type='text'
+            value={this.state.bandCampUrl}
+            onChange={this.handleBandCampUrlChange}
+          />
+        </label>
+        <label>Genre
+          <input
+            label="Genre"
+            name="genre"
+            type='text'
+            value={this.state.genre}
+            onChange={this.handleGenreChange}
+          />
+        </label>
+
 
         <div className="button-group">
 
-          <button className="button">Clear</button>
           <input className="button" type="submit" value="Submit"/>
         </div>
       </form>

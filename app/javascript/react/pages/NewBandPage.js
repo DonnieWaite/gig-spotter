@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import BandNameField from '../components/BandNameField'
-import BandBioField from '../components/BandBioField'
-import BandImageField from '../components/BandImageField'
-import BandCampUrlField from '../components/BandCampUrlField'
-import GenreField from '../components/GenreField'
-
 import BandForm from "../components/BandForm"
 
 import { browserHistory } from 'react-router';

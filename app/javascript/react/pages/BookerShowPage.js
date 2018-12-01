@@ -66,8 +66,8 @@ class BookerShowPage extends Component {
           <div className="cell small-24 large-14">
             <img src={this.state.booker.booker_image} width="500" height="500"/>
           </div>
-          <div className="cell small-24 large-10 grid-y">
-            <p className="band-attribute"><span className="band-attribute-title">{this.state.booker.booker_name}</span> {this.state.booker.booker_bio}</p>
+          <div className="cell small-24 large-12 grid-y">
+            <p className="band-attribute center"><span className="band-attribute-title">{this.state.booker.booker_name}</span> {this.state.booker.booker_bio}</p>
           </div>
         </div>
         {concertsSection}
