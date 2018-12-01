@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import BandNameField from '../components/BandNameField'
-import BandBioField from '../components/BandBioField'
-import BandImageField from '../components/BandImageField'
-import BandCampUrlField from '../components/BandCampUrlField'
-import GenreField from '../components/GenreField'
-
 import BandForm from "../components/BandForm"
 
 import { browserHistory } from 'react-router';
@@ -65,6 +59,10 @@ componentDidMount() {
       <div className='form-div'>
         <h1 className='form-title'>Edit {this.state.band.band_name} </h1>
         <BandForm
+          genre={this.state.band.genre}
+          bandImage={this.state.band.band_image}
+          bancampUrl={this.state.band.bandcamp_url}
+          bandBio={this.state.band.band_bio}
           bandName={this.state.band.band_name}
           handleSubmit={this.editBand} />
       </div>
