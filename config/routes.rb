@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :bands, only: [:index, :show, :create, :update]
-      resources :bookers, only: [:index, :show, :create]
+      resources :bookers, only: [:index, :show, :create, :update]
       resources :concerts, only: [:index, :show, :create]
 
       get "bands/:band_id/concerts", to: "bands#concerts"
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/bookers', to: 'homes#index'
   get '/bookers/:id', to: 'homes#index'
   get '/booker/new', to: 'homes#index'
+  get '/booker/:id/edit', to: 'homes#index'
   get '/concerts/:id', to: 'homes#index'
   get '/concert/new', to: 'homes#index'
   get '/concerts', to: 'homes#index'
