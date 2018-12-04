@@ -17,9 +17,8 @@ RSpec.describe Api::V1::BandsController, type: :controller do
         returned_json = JSON.parse(response.body)
         expect(response.status).to eq 200
         expect(response.content_type).to eq "application/json"
-        binding.pry
-        expect(returned_json.length).to eq 1
-        expect(returned_json["band_name"]).to eq "Very helpful!"
+        expect(returned_json.length).to eq 2
+        expect(returned_json["bands"][0]["band_name"]).to eq "Very helpful!"
       end
     end
 

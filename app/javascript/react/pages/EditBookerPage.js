@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import BandForm from "../components/BandForm"
+import BookerForm from "../components/BookerForm"
 
 import { browserHistory } from 'react-router';
 
 
-class EditBandPage extends Component {
+class EditBookerPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      band: {}
+      booker: {}
     }
-    this.editBand = this.editBand.bind(this)
-    this.getBand = this.getBand.bind(this)
+    this.editBooker = this.editBooker.bind(this)
+    this.getBooker = this.getBooker.bind(this)
   }
 
-  getBand(){
-    fetch(`/api/v1/bands/${this.props.params.bandId}`)
+  getBooker(){
+    fetch(`/api/v1/bookers/${this.props.params.bookerId}`)
     .then(response => {
       if (response.ok) {
         return response;
@@ -29,14 +29,14 @@ class EditBandPage extends Component {
       return response.json();
     })
     .then (data => {
-      let band = data.band
-      this.setState({ band: band })
+      let booker = data.booker
+      this.setState({ booker: booker })
     })
   }
 
-  editBand(formPayload){
+  editBooker(formPayload){
     let jsonStringInfo = JSON.stringify(formPayload)
-    fetch(`/api/v1/bands/${this.props.params.bandId}`, {
+    fetch(`/api/v1/bookers/${this.props.params.bookerId}`, {
       method: 'Put',
       body: jsonStringInfo,
       headers: {
@@ -46,27 +46,26 @@ class EditBandPage extends Component {
     })
     .then(response => response.json())
     .then(response => {
-      browserHistory.push(`/`)
+      debugger
+      browserHistory.push(`/bookers`)
     })
   }
 
 componentDidMount() {
-  this.getBand()
+  this.getBooker()
 }
 
   render() {
     return (
       <div className='form-div'>
-        <h1 className='form-title'>Edit {this.state.band.band_name} </h1>
-        <BandForm
-          genre={this.state.band.genre}
-          bandImage={this.state.band.band_image}
-          bancampUrl={this.state.band.bandcamp_url}
-          bandBio={this.state.band.band_bio}
-          bandName={this.state.band.band_name}
-          handleSubmit={this.editBand} />
+        <h1 className='form-title'>Edit {this.state.booker.booker_name} </h1>
+        <BookerForm
+          bookerImage={this.state.booker.booker_image}
+          bookerBio={this.state.booker.booker_bio}
+          bookerName={this.state.booker.booker_name}
+          handleSubmit={this.editBooker} />
       </div>
     )
   }
 }
-export default EditBandPage;
+export default EditBookerPage;

@@ -12,6 +12,7 @@ import BookerShowPage from './pages/BookerShowPage'
 import ConcertShowPage from './pages/ConcertShowPage'
 import NewConcertPage from './pages/NewConcertPage'
 import ConcertIndexPage from './pages/ConcertIndexPage'
+import EditBookerPage from './pages/EditBookerPage'
 
 export const App = (props) => {
   return (
@@ -24,6 +25,7 @@ export const App = (props) => {
         <Route path="/band/:bandId/edit" component={EditBandPage}/>
         <Route path='/bookers' component={BookerIndex}/>
         <Route path='/booker/new' component={NewBookerPage}/>
+        <Route path='/booker/:bookerId/edit' component={EditBookerPage}/>
         <Route path='/bookers/:bookerId' component={BookerShowPage}/>
         <Route path='/concerts' component={ConcertIndexPage}/>
         <Route path='/concerts/:concertId' component={ConcertShowPage}/>

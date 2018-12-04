@@ -12,7 +12,7 @@ RSpec.describe Api::V1::BookersController, type: :controller do
     end
 
     describe "GET#index" do
-      it "should return a list of all the bands" do
+      it "should return a list of all the bookers" do
         get :index
         returned_json = JSON.parse(response.body)
         expect(response.status).to eq 200

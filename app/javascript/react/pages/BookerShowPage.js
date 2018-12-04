@@ -9,7 +9,9 @@ class BookerShowPage extends Component {
     super(props);
     this.state = {
       booker: {},
-      concerts: []
+      concerts: [],
+      user: [],
+      currentUser: []
     };
   }
 
@@ -30,9 +32,13 @@ class BookerShowPage extends Component {
     .then(data => {
       let booker = data.booker
       let concert = data.concerts
+      let user = data.user
+      let currentUser = data.current_user
       this.setState({
         booker: booker,
-        concerts: concert
+        concerts: concert,
+        user: user,
+        currentUser: currentUser
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -40,6 +46,11 @@ class BookerShowPage extends Component {
 
 
   render() {
+    let editBookerLink = ""
+    if (this.state.currentUser.id === this.state.user.id) {
+      editBookerLink = <Link to={`/booker/${this.props.params.bookerId}/edit`}>Edit Booker</Link>
+    }
+
     let concerts = this.state.concerts.map(concert => {
       return <ConcertTile key={concert.id} concert={concert}/>
     })
@@ -59,6 +70,7 @@ class BookerShowPage extends Component {
 
     return (
       <div>
+        {editBookerLink}
         <div className="band-card grid-x grid-margin-x">
           <div className="cell small-24">
             <h1 className="band-show-page-title">{this.state.booker.organization_name}</h1>
