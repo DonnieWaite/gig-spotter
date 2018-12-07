@@ -44,6 +44,12 @@ class Api::V1::BandsController < ApplicationController
     }
   end
 
+
+def destroy
+  @band = Band.find(params[:id])
+  @band.destroy
+end
+
   private
 
   def set_band!
