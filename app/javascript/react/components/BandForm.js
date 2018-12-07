@@ -40,6 +40,7 @@ class BandForm extends Component {
     this.setState({ bandImage: event.target.value})
   }
 
+
   handleSubmit(event) {
     event.preventDefault()
     let formPayload = {
@@ -104,7 +105,7 @@ class BandForm extends Component {
 
 
         <div className="button-group">
-
+          <button className="button" onClick={() => this.props.handleDelete(this.props.bandId)}>Delete</button>
           <input className="button" type="submit" value="Submit"/>
         </div>
       </form>

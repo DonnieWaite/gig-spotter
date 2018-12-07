@@ -43,6 +43,7 @@ class BandShowPage extends Component {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
+  
 
   componentDidMount(){
   this.fetchBand()
