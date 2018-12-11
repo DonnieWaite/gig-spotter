@@ -73,6 +73,7 @@ class BookerForm extends Component {
 
         <div className="button-group">
 
+          <button className="button" onClick={() => this.props.handleDelete(this.props.bookerId)}>Delete</button>
           <input className="button" type="submit" value="Submit"/>
         </div>
       </form>

@@ -11,7 +11,7 @@ class BookerShowPage extends Component {
       booker: {},
       concerts: [],
       user: [],
-      currentUser: []
+      currentUser: {}
     };
   }
 
@@ -30,10 +30,13 @@ class BookerShowPage extends Component {
       return response.json();
     })
     .then(data => {
+      let currentUser = {}
       let booker = data.booker
       let concert = data.concerts
       let user = data.user
-      let currentUser = data.current_user
+      if (data.currentUser !== null) {
+         currentUser = data.current_user
+      }
       this.setState({
         booker: booker,
         concerts: concert,
@@ -46,8 +49,10 @@ class BookerShowPage extends Component {
 
 
   render() {
-    let editBookerLink = ""
-    if (this.state.currentUser.id === this.state.user.id) {
+    let editBookerLink = <p></p>
+    if (this.state.currentUser === null){
+      editBookerLink = <p></p>
+    } else if (this.state.currentUser.id === this.state.user.id) {
       editBookerLink = <Link to={`/booker/${this.props.params.bookerId}/edit`}>Edit Booker</Link>
     }
 
@@ -80,6 +85,7 @@ class BookerShowPage extends Component {
           </div>
           <div className="cell small-24 large-12 grid-y">
             <p className="band-attribute center"><span className="band-attribute-title">{this.state.booker.booker_name}</span> {this.state.booker.booker_bio}</p>
+            <p className="center">{this.state.user.email}</p>
           </div>
         </div>
         {concertsSection}
