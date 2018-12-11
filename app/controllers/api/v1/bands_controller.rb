@@ -1,7 +1,7 @@
 class Api::V1::BandsController < ApplicationController
 
   before_action :set_band!, only: [:update, :show]
-  before_action :authenticate_user_for_band!, only: [:update]
+  before_action :authenticate_user_for_band!, only: [:update, :destroy]
 
   def index
     all_bands = Band.all

@@ -12,6 +12,7 @@ class EditBookerPage extends Component {
     }
     this.editBooker = this.editBooker.bind(this)
     this.getBooker = this.getBooker.bind(this)
+    this.handleDeleteBooker = this.handleDeleteBooker.bind(this)
   }
 
   getBooker(){
@@ -34,6 +35,20 @@ class EditBookerPage extends Component {
     })
   }
 
+  handleDeleteBooker(id){
+    fetch(`/api/v1/bookers/${this.props.params.bookerId}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+      ).then((response) => {
+          console.log('Item was deleted!')
+          browserHistory.push(`/bookers`)
+      })
+  }
+
   editBooker(formPayload){
     let jsonStringInfo = JSON.stringify(formPayload)
     fetch(`/api/v1/bookers/${this.props.params.bookerId}`, {
@@ -46,7 +61,6 @@ class EditBookerPage extends Component {
     })
     .then(response => response.json())
     .then(response => {
-      debugger
       browserHistory.push(`/bookers`)
     })
   }
@@ -63,7 +77,8 @@ componentDidMount() {
           bookerImage={this.state.booker.booker_image}
           bookerBio={this.state.booker.booker_bio}
           bookerName={this.state.booker.booker_name}
-          handleSubmit={this.editBooker} />
+          handleSubmit={this.editBooker}
+          handleDelete={this.handleDeleteBooker}/>
       </div>
     )
   }

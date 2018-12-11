@@ -29,6 +29,11 @@ class Api::V1::BookersController < ApplicationController
     }
   end
 
+  def destroy
+    @booker = Booker.find(params[:id])
+    @booker.destroy
+  end
+
   private
   def set_booker!
     unless @booker = Booker.find_by(id: params[:id])
