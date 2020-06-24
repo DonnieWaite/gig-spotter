@@ -23,4 +23,4 @@ Things you may want to cover:
 
 * ...
 
-[![Build Status](https://codeship.com/projects/<YOUR_PROJECT_UUID>/status?branch=master)
+[![Build Status](https://app.codeship.com/projects/d276d090-bdd5-0136-9f6e-62daa5c189cd/status?branch=master)
