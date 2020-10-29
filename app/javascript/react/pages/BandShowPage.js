@@ -51,7 +51,7 @@ class BandShowPage extends Component {
 
   render() {
     let editBandLink = ""
-    if (this.state.currentUser.id === this.state.user.id) {
+    if (this.state.currentUser !== null && this.state.currentUser.id === this.state.user.id) {
       editBandLink = <Link to={`/band/${this.props.params.bandId}/edit`}>Edit band</Link>
     }
     let concerts = this.state.concerts.map(concert => {
