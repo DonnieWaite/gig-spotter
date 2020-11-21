@@ -7,49 +7,37 @@
   <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
 
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1 class="name"><a href="/">GigSpotter</a></h1>
-      </li>
-    </ul>
-    <ul class="title-area">
-      <li class="name">
-        <h1 class="nav-bar-links"><a href="/bookers">Bookers</a></h1>
-      </li>
-    </ul>
-    <ul class="title-area">
-      <li class="name">
-        <h1 class="nav-bar-links"><a href="/">Bands</a></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="left">
-        <li class="name">
-          <h1 class="nav-bar-links"><a href="/concert/new">Create Event</a></h1>
-        </li>
-      </ul>
-    </section>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
+<div class="top-bar" id="responsive-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="main-title-text"><a href="/">GiG Spotter</a></li>
+      <li class="title-link"><a href="/bookers">Bookers</a></li>
+      <li class="title-link"><a href="/">Bands</a></li>
+      <li class="has-submenu">
+        <ul class="submenu menu vertical" data-submenu>
+          <%- if current_user -%>
           <li><img class="profile_photo" src="<%= current_user.profile_photo %>" width="45" height="45" /></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
+            <%- else -%>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+          <%- end -%>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
 
 
 

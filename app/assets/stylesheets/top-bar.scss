@@ -1,0 +1,19 @@
+.top-bar {
+  background-image: -webkit-linear-gradient(rgb(240, 205, 51), black);
+  background-image: -o-linear-gradient(rgb(241, 224, 63), black);
+  background-image: linear-gradient(rgb(207, 118, 35), black);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 5px;
+}
+
+.title-link {
+  font-size: xx-large;
+}
+
+.main-title-text {
+  font-size: xx-large;
+}
+
+.dropdown.menu {
+  border-radius: 15px;
+}
